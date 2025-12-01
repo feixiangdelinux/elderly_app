@@ -32,3 +32,11 @@ jobs:
     - name: Build iOS (no codesign)
       run: |
         flutter build ios --release --no-codesign
+        
+    # 添加上传构建产物的步骤
+    - name: Upload iOS Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ios-app
+        path: build/ios/iphoneos/Runner.app
+        retention-days: 30
